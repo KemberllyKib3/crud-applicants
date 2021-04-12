@@ -1,0 +1,57 @@
+.content-card {
+  border-radius: 20px;
+  border-top: 10px solid dodgerblue;
+  box-shadow: 0px 2px 5px 0.1px black;
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  height: fit-content;
+  width: fit-content;
+  padding: 20px 20px 20px 20px;
+  background-color: white;
+}
+.content {
+  min-width: 900px;
+  width: auto;
+}
+
+.btn {
+  background-color: dodgerblue;
+  border: none;
+  color: white;
+  padding: 12px 12px;
+  cursor: pointer; 
+}
+
+.btn:hover {
+  background-color: royalblue;
+}
+
+.table tr:nth-child(even){background-color: #f2f2f2;}
+
+.table tr:hover {background-color: #ddd;}
+
+.table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: dodgerblue;
+  color: white;
+}
+
+.table td {
+  max-width: 230px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table td, .table th {
+  border: 1px solid #ddd;
+  padding: 6px;
+}
+
+.table {
+  border-collapse: collapse;
+}

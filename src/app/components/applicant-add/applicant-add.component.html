@@ -1,0 +1,86 @@
+<div class="content-card">
+  <div class="content">
+
+    <div class="container">
+      <h2>Cadastro de Candidatos</h2>
+    </div>
+
+    <div class="col">
+      <div class="col-md-4">
+        <form [formGroup]="applicantForm" (ngSubmit)="onSubmit()" name="formulario">
+          <div class="form-group">
+            <label>Email</label><span>*</span><br>
+            <input id="email" class="form-control" type="text" formControlName="email" required>
+            <span *ngIf="email?.invalid && email?.touched" >Este campo é necessário</span>
+            
+          </div>
+
+          <div class="form-group">
+            <label>Nome</label><span>*</span><br>
+            <input id="name" class="form-control" type="text" formControlName="name" required>
+            <span *ngIf="name?.invalid && name?.touched" >Este campo é necessário</span>
+          </div>
+
+          <div class="form-group">
+            <label>Telefone/Whatsapp</label><span>*</span><br>
+            <input id="whatsapp" class="form-control" type="text" formControlName="whatsapp" required />
+            <span *ngIf="whatsapp?.invalid && whatsapp?.touched" >Este campo é necessário</span>
+          </div>
+
+          <div class="form-group">
+            <label>Linkedin</label><br>
+            <input id="linkedin" class="form-control" type="text" formControlName="linkedin">
+          </div>
+
+          <div class="form-group">
+            <label>Cidade</label><span>*</span><br>
+            <input id="city" class="form-control" type="text" formControlName="city" required>
+            <span *ngIf="city?.invalid && city?.touched" >Este campo é necessário</span>
+          </div>
+
+          <div class="form-group">
+            <label>UF</label><span>*</span><br>
+            <input id="UF" class="form-control" type="text" formControlName="UF" required>
+            <span *ngIf="UF?.invalid && UF?.touched" >Este campo é necessário</span>
+          </div>
+
+          <div class="form-group">
+            <label>Portfolio</label><br>
+            <input id="portfolio" class="form-control" type="text" formControlName="portfolio">
+          </div>
+
+          <div class="form-group">
+            <label>Qual é sua disponibilidade para trabalhar hoje?</label><br>
+            <div *ngFor="let data of data_disponibility; let i=index">
+              <input id="disponibility" type="checkbox" [value]="data.value" (change)="onCheckboxChange('disponibility', $event)">
+              <label>{{data.name}}</label>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <label>Pra você qual é o melhor horário para trabalhar?</label><br>
+            <div *ngFor="let data of data_day_period; let i=index">
+              <input id="day_period" type="checkbox" [value]="data.value" (change)="onCheckboxChange('day_period', $event)">
+              <label>{{data.name}}</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Pretensão Salarial</label><span>*</span><br>
+            <input id="salario" class="form-control" type="text" formControlName="salario" required>
+            <span *ngIf="salario?.invalid && salario?.touched" >Este campo é necessário</span>
+          </div>
+
+          <div class="form-group">
+            <button class="btn" type="submit" [disabled]="!applicantForm.valid">Adicionar Candidato</button>
+            <button class="btn" type="reset" (click)="reset()">Limpar</button>
+          </div>
+
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

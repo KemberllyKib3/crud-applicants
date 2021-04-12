@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="content-card">
+  <div class="content">
+    <div class="container">
+      <h2>Lista de Candidatos</h2>
+    </div>
+  
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Whatsapp</th>
+            <th scope="col">Linkedin</th>
+            <th scope="col">P.Salarial</th>
+            <th style="text-align: center;" scope="col">Acão</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          <tr *ngFor="let candidato of Applicants; let i = index">
+            <td>{{candidato.name}}</td>
+            <td>{{candidato.email}}</td>
+            <td>{{candidato.whatsapp}}</td>
+            <td>{{candidato.linkedin}}</td>
+            <td>{{candidato.salario}}</td>
+            <td class="text-center">
+              <button class="btn" routerLink="/edit-applicant/{{candidato._id}}">
+                <!-- Editar Informações -->
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </button>
+              <button class="btn" (click)="delete(candidato._id, i)">
+                <!-- Apagar -->
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </button>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

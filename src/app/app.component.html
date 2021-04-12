@@ -1,0 +1,24 @@
+<div class="sidenav">
+
+  <div style="text-align: center;" class="img-logo">
+    <img style="outline: none;" class="nav-link" routerLinkActive="active" routerLink="/home"
+      style="border-radius: 50%;" src="../assets/images/logo.jpg" alt="inicio">
+  </div>
+  <div style="height: 1px; background-color: #fff;" class="separador"></div>
+
+  <div class="button">
+    <a class="nav-link" routerLinkActive="active" routerLink="/home">Início</a>
+  </div>
+
+  <div class="button">
+    <a class="nav-link" routerLinkActive="active" routerLink="/applicants">Ver Candidatos</a>
+  </div>
+  <div class="button">
+    <a class="nav-link" routerLinkActive="active" routerLink="/add-applicant">Adicionar Candidato</a>
+  </div>
+</div>
+
+
+<div class="main">
+  <router-outlet></router-outlet>
+</div>

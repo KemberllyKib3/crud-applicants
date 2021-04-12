@@ -1,0 +1,60 @@
+.content-card {
+  border-top: 10px solid dodgerblue;
+  border-radius: 20px;
+  box-shadow: 0px 2px 5px 0.1px black;
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  height: 87%;
+  width: 640px;
+  padding: 20px 20px 20px 20px;
+  background-color: white;
+}
+
+.content {
+  width: auto;
+  height: 100%;
+  overflow: scroll;
+}
+
+.form-group {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.form-group span{
+  font-size: small;
+  color: red;
+}
+
+.form-group input {
+  margin: 10px 10px;
+}
+
+.form-group input[type=text] {
+  font-size: 16px;
+  width: 100%;
+  border: none;
+  padding: 10px 10px;
+  margin: 5px 0px 0px 0px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid lightgray;
+}
+
+.form-group button[type=submit] {
+  background-color: dodgerblue; /* Green */
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: medium;
+}
+
+.form-group button:disabled {
+  background-color: lightgray;
+  color: gray;
+}
