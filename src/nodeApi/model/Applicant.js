@@ -11,8 +11,7 @@ let Applicant = new Schema({
   portfolio: { type: String },
   disponibility: { type: Array },
   day_period: { type: Array },
-  salario: { type: String },
-
+  desired_salary: { type: String },
 }, { collection: 'applicants' })
 
 module.exports = mongoose.model('Applicant', Applicant)

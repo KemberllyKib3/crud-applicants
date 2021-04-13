@@ -1,5 +1,6 @@
+import { Applicant } from './../../services/applicant';
 import { CrudService } from './../../services/crud.service';
-import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl, FormControlName } from '@angular/forms';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -11,7 +12,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ApplicantDetailComponent implements OnInit {
 
   getId: any;
-  updateForm: FormGroup;
+  updateForm!: FormGroup;
+  Applicants: any = [];
+  checkDisp: string[] = [];
+  checkDay: string[] = [];
 
   constructor(
     public formBuilder: FormBuilder,
@@ -19,37 +23,7 @@ export class ApplicantDetailComponent implements OnInit {
     private ngZone: NgZone,
     private activatedRoute: ActivatedRoute,
     private crudService: CrudService,
-  ) {
-    this.getId = this.activatedRoute.snapshot.paramMap.get('id');
-
-    this.crudService.GetApplicant(this.getId).subscribe(res => {
-      this.updateForm.setValue({
-        email: res['email'],
-        name: res['name'],
-        whatsapp: res['whatsapp'],
-        linkedin: res['linkedin'],
-        city: res['city'],
-        UF: res['UF'],
-        portfolio: res['portfolio'],
-        disponibility: res['disponibility'],
-        day_period: res['day_period'],
-        salario: res['salario'],
-      });
-    });
-
-    this.updateForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      name: ['', Validators.required],
-      whatsapp: ['', Validators.required],
-      linkedin: [''],
-      UF: ['', Validators.required],
-      city: ['', Validators.required],
-      portfolio: [''],
-      disponibility: this.formBuilder.array([]),
-      day_period: this.formBuilder.array([]),
-      salario: ['', Validators.required],
-    });
-  }
+  ) { }
 
   data_disponibility: Array<any> = [
     { name: 'Até 4 horas por dia', value: 'Até 4 horas por dia' },
@@ -66,16 +40,6 @@ export class ApplicantDetailComponent implements OnInit {
     { name: 'Madrugada (de 22:00 em diante)', value: 'Madrugada (de 22:00 em diante)' },
     { name: 'Comercial (de 08:00 as 18:00)', value: 'Comercial (de 08:00 as 18:00)' }
   ];
-  
-
-  checkValue(valor: any): any {
-    if(this.data_day_period.find(e => e.name === valor)) {
-      return
-    } else {
-      if(this.data_day_period.find(e => e.name === valor)) 
-      return;
-    }
-  }
 
   onCheckboxChange(field: string, e: any) {
     const checkArray: FormArray = this.updateForm.get(field) as FormArray;
@@ -92,9 +56,42 @@ export class ApplicantDetailComponent implements OnInit {
         i++;
       });
     }
-  } 
+  }
+
 
   ngOnInit(): void {
+    this.getId = this.activatedRoute.snapshot.paramMap.get('id');
+
+    this.crudService.GetApplicant(this.getId).subscribe(res => {
+      this.checkDisp = res['disponibility'];
+      this.checkDay = res['day_period'];
+
+      this.updateForm.setValue({
+        email: res['email'],
+        name: res['name'],
+        whatsapp: res['whatsapp'],
+        linkedin: res['linkedin'],
+        city: res['city'],
+        UF: res['UF'],
+        portfolio: res['portfolio'],
+        desired_salary: res['desired_salary'],
+        disponibility: res['disponibility'],
+        day_period: res['day_period'],
+      });
+    });
+
+    this.updateForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      name: ['', Validators.required],
+      whatsapp: ['', Validators.required],
+      linkedin: [''],
+      UF: ['', Validators.required],
+      city: ['', Validators.required],
+      portfolio: [''],
+      disponibility: this.formBuilder.array([]),
+      day_period: this.formBuilder.array([]),
+      desired_salary: ['', Validators.required],
+    });
   }
 
   onUpdate(): any {
@@ -107,4 +104,9 @@ export class ApplicantDetailComponent implements OnInit {
       });
   }
 
+  checkValue(value: string): any {
+    if (this.checkDisp.find(val => val === value) || this.checkDay.find(val => val === value)) {
+      return true;
+    }
+  }
 }

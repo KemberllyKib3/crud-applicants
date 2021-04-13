@@ -1,5 +1,4 @@
 import { CrudService } from './../../services/crud.service';
-import { Applicant } from './../../services/applicant';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -15,7 +14,7 @@ export class ApplicantListComponent implements OnInit {
 
   ngOnInit(): void {
     this.crudService.GetAllApplicants().subscribe(res => {
-      console.log(res)
+      // console.log(res)
       this.Applicants = res;
     });
   }

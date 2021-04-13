@@ -18,7 +18,7 @@ export class ApplicantAddComponent implements OnInit {
   get whatsapp() { return this.applicantForm.get('whatsapp') }
   get city() { return this.applicantForm.get('city') }
   get UF() { return this.applicantForm.get('UF') }
-  get salario() { return this.applicantForm.get('salario') }
+  get desired_salary() { return this.applicantForm.get('desired_salary') }
 
   constructor(
     public formBuilder: FormBuilder,
@@ -54,8 +54,8 @@ export class ApplicantAddComponent implements OnInit {
       portfolio: [''],
       disponibility: this.formBuilder.array([]),
       day_period: this.formBuilder.array([]),
-      salario: ['', Validators.required],
-    })
+      desired_salary: ['', Validators.required],
+    });
   }
 
   onCheckboxChange(field: string, e: any) {

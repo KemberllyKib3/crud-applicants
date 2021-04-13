@@ -9,5 +9,5 @@ export class Applicant {
   portfolio!: String;
   disponibility!: String;
   day_period!: String;
-  salario!: String;
+  desired_salary!: String;
 }

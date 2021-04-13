@@ -9,19 +9,19 @@
       <div class="col-md-4">
         <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
           <div class="form-group">
-            <label>Email</label><span>*</span>
+            <label>Email</label><span style="font-size: 16px;">*</span>
             <input id="email" class="form-control" type="text" formControlName="email" required>
             <!-- <span *ngIf="email?.invalid && email?.touched" >Este campo é necessário</span> -->
           </div>
 
           <div class="form-group">
-            <label>Nome</label><span>*</span>
+            <label>Nome</label><span style="font-size: 16px;">*</span>
             <input id="name" class="form-control" type="text" formControlName="name" required>
             <!-- <span *ngIf="name?.invalid && name?.touched" >Este campo é necessário</span> -->
           </div>
 
           <div class="form-group">
-            <label>Telefone/Whatsapp</label><span>*</span>
+            <label>Telefone/Whatsapp</label><span style="font-size: 16px;">*</span>
             <input id="whatsapp" class="form-control" type="text" formControlName="whatsapp" required>
             <!-- <span *ngIf="whatsapp?.invalid && whatsapp?.touched" >Este campo é necessário</span> -->
           </div>
@@ -33,13 +33,13 @@
 
 
           <div class="form-group">
-            <label>Cidade</label><span>*</span>
+            <label>Cidade</label><span style="font-size: 16px;">*</span>
             <input id="city" class="form-control" type="text" formControlName="city" required>
             <!-- <span *ngIf="city?.invalid && city?.touched" >Este campo é necessário</span> -->
           </div>
 
           <div class="form-group">
-            <label>UF</label><span>*</span>
+            <label>UF</label><span style="font-size: 16px;">*</span>
             <input id="UF" class="form-control" type="text" formControlName="UF" required>
             <!-- <span *ngIf="UF?.invalid && UF?.touched" >Este campo é necessário</span> -->
           </div>
@@ -53,31 +53,32 @@
             <label>Qual é sua disponibilidade para trabalhar hoje?</label><br>
             <div *ngFor="let data of data_disponibility; let i=index">
               <input id="disponibility" type="checkbox" [value]="data.value"
-                (change)="onCheckboxChange('disponibility', $event)">
+                (change)="onCheckboxChange('disponibility', $event)" [checked]="checkValue(data.name)">
               <label>{{data.name}}</label>
             </div>
-
           </div>
 
           <div class="form-group">
             <label>Pra você qual é o melhor horário para trabalhar?</label><br>
             <div *ngFor="let data of data_day_period; let i=index">
-              <input id="day_period" type="checkbox" [value]="data.value" [checked]="checkValue(data.value)"
-                (change)="onCheckboxChange('day_period', $event)">
+              <input id="day_period" type="checkbox" [value]="data.value"
+                (change)="onCheckboxChange('day_period', $event)" [checked]="checkValue(data.name)">
               <label>{{data.name}}</label>
             </div>
           </div>
 
-
           <div class="form-group">
-            <label>Pretensão Salarial</label><span>*</span>
-            <input id="salario" class="form-control" type="text" formControlName="salario" required>
-            <!-- <span *ngIf="salario?.invalid && salario?.touched" >Este campo é necessário</span> -->
+            <label>Pretensão Salarial</label><span style="font-size: 16px;">*</span>
+            <input class="form-control" type="text" formControlName="desired_salary" required>
+            <!-- <span *ngIf="desired_salary?.invalid && desired_salary?.touched" >Este campo é necessário</span> -->
           </div>
 
+
           <div class="form-group">
-            <button class="btn btn-primary btn-block" type="submit">Salvar alterações</button>
+            <button class="btn" type="submit">Salvar alterações</button>
+
           </div>
+
         </form>
       </div>
     </div>
